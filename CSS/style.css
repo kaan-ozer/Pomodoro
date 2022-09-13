@@ -111,3 +111,8 @@ header {
   height: 24px;
   width: 24px;
 }
+
+#github-icon {
+  bottom: 32px;
+  position: absolute;
+}
