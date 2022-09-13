@@ -42,19 +42,47 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-button {
+.btn-header {
   border: none;
   color: #fff;
   font-size: 24px;
   background-color: transparent;
   margin-bottom: 8px;
+  padding: 12px;
 }
+.btn-header:hover {
+  font-weight: bold;
+  color: #ced4da;
+  cursor: pointer;
+}
+
+.btn-start-stop {
+  margin-top: 24px;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  background-color: transparent;
+  margin-bottom: 8px;
+  background-color: rgba(222, 226, 230, 0.193);
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 500;
+}
+
+.btn-start-stop:hover {
+  background-color: rgba(52, 58, 64, 0.447);
+  font-weight: bold;
+  color: #ced4da;
+  cursor: pointer;
+}
+
 .active-btn {
   background-color: rgba(52, 58, 64, 0.447);
-  padding: 12px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .countdown {

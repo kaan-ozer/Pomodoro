@@ -1,7 +1,8 @@
 "use strict";
 
 /* Elements */
-const countdownElement = document.querySelector(".countdown");
+const countdownEl = document.querySelector(".countdown");
+const btnStartStopEl = document.querySelector(".btn-start-stop");
 
 const startingMinutes = 20;
 
@@ -20,7 +21,7 @@ const updateCountdown = function () {
 
   console.log(minutes, seconds, totalTime);
 
-  countdownElement.innerHTML = `${minutes}:${seconds}`;
+  countdownEl.innerHTML = `${minutes}:${seconds}`;
 
   totalTime--;
 
@@ -30,4 +31,17 @@ const updateCountdown = function () {
   }
 };
 
-let refreshInterval = setInterval(updateCountdown, 1000);
+// let refreshInterval = setInterval(updateCountdown, 1000);
+let refreshInterval;
+btnStartStopEl.addEventListener("click", function () {
+  console.log(btnStartStopEl.textContent);
+  if (btnStartStopEl.textContent === "START") {
+    refreshInterval = setInterval(updateCountdown, 1000);
+    btnStartStopEl.innerHTML = "STOP";
+    btnStartStopEl.style.backgroundColor = " rgba(52, 58, 64, 0.447)";
+  } else if (btnStartStopEl.textContent === "STOP") {
+    clearInterval(refreshInterval);
+    btnStartStopEl.innerHTML = "START";
+    btnStartStopEl.style.backgroundColor = " rgba(222, 226, 230, 0.193)";
+  }
+});
