@@ -39,6 +39,9 @@ header {
   margin: 48px;
   height: 500px;
   background-color: rgba(255, 255, 255, 0.285);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -52,4 +55,11 @@ button {
   background-color: rgba(52, 58, 64, 0.447);
   padding: 12px;
   border-radius: 4px;
+}
+
+.countdown {
+  font-size: 128px;
+  font-weight: 700px;
+  color: #fff;
+  letter-spacing: 5px;
 }
