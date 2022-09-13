@@ -3,50 +3,116 @@
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
 const btnStartStopEl = document.querySelector(".btn-start-stop");
+const btnPomodoroEl = document.querySelector("#btn-pomodoro");
+const btnShortBreakEl = document.querySelector("#btn-shortBreak");
+const btnLongBreakEl = document.querySelector("#btn-longBreak");
 
 /* variables */
 
 //pomodoro counter
 let pomodoroCounter = 0;
 //poomodoro starting minutes
-const startingMinutes = 1;
+const startingMinutes = 20;
 //short break starting minutes
-const shortBreakMinutes = 5;
+const shortBreakMinutes = 1;
+//long break starting minutes
+const longBreakMinutes = 1;
 // time from second type
-let totalTime = startingMinutes * 60;
-let refreshInterval;
+
+// startingMinutes * 60
+let totalTime = 2;
+let refreshInterval, minutes, seconds;
+
+let isShortBreakActive = false,
+  isLongBreakActive = false,
+  isPomodoroActive = true;
 
 /* Functions */
-function updateCountdown() {
-  let minutes = Math.floor(totalTime / 60);
+function resetStartStop() {
+  btnStartStopEl.innerHTML = "START";
+  btnStartStopEl.style.backgroundColor = " rgba(222, 226, 230, 0.193)";
+}
 
+function setTime() {
+  //get minutes
+  minutes = Math.floor(totalTime / 60);
+
+  // if it is less than 10 add 0 before the minute
   minutes = minutes < 10 ? "0" + minutes : minutes;
 
-  let seconds = totalTime % 60;
+  //get seconds
+  seconds = totalTime % 60;
 
+  // if it is less than 10 add 0 before the second
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  console.log(minutes, seconds, totalTime);
-
+  //show the result
   countdownEl.innerHTML = `${minutes}:${seconds}`;
+}
 
+function updateCountdown() {
+  // get minutes and seconds and show the result
+  setTime();
+
+  // total time will be decreased as one second in each second
   totalTime--;
 
   if (totalTime < 0) {
-    pomodoroCounter++;
+    //stop the setInterval when time = 0 for avoid negative time
+    clearInterval(refreshInterval);
 
-    if (pomodoroCounter === 4) {
-      document.getElementsById("btn-pomodoro").classList.remove("active-btn");
-    } else {
-      document.getElementsById("btn-shortBreak").classList.add("active-btn");
-      totalTime = shortBreakMinutes * 60;
-      countdownEl.innerHTML = `${minutes}:${seconds}`;
-      //stop the setInterval when time = 0 for avoid negative time
-      clearInterval(refreshInterval);
+    if (isPomodoroActive) {
+      //increase the counter
+      pomodoroCounter++;
+
+      if (pomodoroCounter === 4) {
+        btnPomodoroEl.classList.remove("active-btn");
+        btnLongBreakEl.classList.add("active-btn");
+        isLongBreakActive = true;
+        isPomodoroActive = false;
+
+        totalTime = longBreakMinutes * 60;
+
+        setTime();
+        totalTime = 2;
+        resetStartStop();
+      } else {
+        btnPomodoroEl.classList.remove("active-btn");
+        btnShortBreakEl.classList.add("active-btn");
+        isShortBreakActive = true;
+        isPomodoroActive = false;
+
+        totalTime = shortBreakMinutes * 60;
+
+        setTime();
+        resetStartStop();
+      }
+    } else if (isShortBreakActive) {
+      btnPomodoroEl.classList.add("active-btn");
+      btnShortBreakEl.classList.remove("active-btn");
+      isShortBreakActive = false;
+      isPomodoroActive = true;
+
+      totalTime = minutes * 60;
+
+      setTime();
+      resetStartStop();
+    } else if (isLongBreakActive) {
+      btnLongBreakEl.classList.remove("active-btn");
+      btnPomodoroEl.classList.add("active-btn");
+      isLongBreakActive = false;
+      isPomodoroActive = true;
+      pomodoroCounter = 0;
+
+      totalTime = minutes * 60;
+
+      setTime();
+      resetStartStop();
     }
   }
 }
 
+/*Event Listeners */
 // let refreshInterval = setInterval(updateCountdown, 1000);
 
 btnStartStopEl.addEventListener("click", function () {
