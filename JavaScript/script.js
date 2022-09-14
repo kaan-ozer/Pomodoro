@@ -97,7 +97,7 @@ function updateCountdown() {
         isShortBreakActive = true;
         isPomodoroActive = false;
 
-        totalTime = shortBreakMinutes * 60;
+        totalTime = minutes * 60;
 
         setTime();
         resetStartStop();
@@ -108,7 +108,7 @@ function updateCountdown() {
       isShortBreakActive = false;
       isPomodoroActive = true;
 
-      totalTime = minutes * 60;
+      totalTime = shortBreakMinutes * 60;
 
       setTime();
       resetStartStop();
@@ -119,7 +119,7 @@ function updateCountdown() {
       isPomodoroActive = true;
       pomodoroCounter = 0;
 
-      totalTime = minutes * 60;
+      totalTime = longBreakInput * 60;
 
       setTime();
       resetStartStop();
