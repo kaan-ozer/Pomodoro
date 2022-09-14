@@ -10,21 +10,31 @@ const btnRightEl = document.querySelector(".btn-right");
 const btnLeftEl = document.querySelector(".btn-left");
 const sidebarClosed = document.querySelector(".side-bar-closed");
 const sidebarOpen = document.querySelector(".side-bar-open");
+const btnCloseModal = document.querySelector(".btn-close-modal");
+const modalSettings = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const settingsAnchor = document.querySelector(".settings-anchor");
+const settingsAnchorOpenBar = document.querySelector(
+  ".settings-anchor-open-bar"
+);
+const btnSet = document.querySelector(".btn-set");
 
 /* variables */
+
+let pomodoroInput, shortBreakInput, longBreakInput, interval;
 
 //pomodoro counter
 let pomodoroCounter = 0;
 //poomodoro starting minutes
-const startingMinutes = 20;
-//short break starting minutes
-const shortBreakMinutes = 1;
-//long break starting minutes
-const longBreakMinutes = 1;
-// time from second type
+let startingMinutes = 20;
 
-// startingMinutes * 60
-let totalTime = 2;
+//short break starting minutes
+let shortBreakMinutes = 1;
+//long break starting minutes
+let longBreakMinutes = 1;
+// time from second type
+let totalTime = startingMinutes * 60;
+let defaultIntervalForPomodoro = 4;
 let refreshInterval, minutes, seconds;
 
 let isShortBreakActive = false,
@@ -69,7 +79,8 @@ function updateCountdown() {
       //increase the counter
       pomodoroCounter++;
 
-      if (pomodoroCounter === 4) {
+      //check the ınterval of pomodoro
+      if (pomodoroCounter === defaultIntervalForPomodoro) {
         btnPomodoroEl.classList.remove("active-btn");
         btnLongBreakEl.classList.add("active-btn");
         isLongBreakActive = true;
@@ -143,4 +154,45 @@ btnRightEl.addEventListener("click", function () {
 btnLeftEl.addEventListener("click", function () {
   sidebarClosed.classList.remove("hidden");
   sidebarOpen.classList.add("hidden");
+});
+
+btnCloseModal.addEventListener("click", function () {
+  overlay.classList.add("hidden");
+  modalSettings.classList.add("hidden");
+});
+
+settingsAnchor.addEventListener("click", function () {
+  overlay.classList.remove("hidden");
+  modalSettings.classList.remove("hidden");
+});
+settingsAnchorOpenBar.addEventListener("click", function () {
+  overlay.classList.remove("hidden");
+  modalSettings.classList.remove("hidden");
+});
+overlay.addEventListener("click", function () {
+  overlay.classList.add("hidden");
+  modalSettings.classList.add("hidden");
+});
+
+btnSet.addEventListener("click", function () {
+  const arr = [];
+  for (let i = 1; i <= 4; i++) {
+    arr[i] = document.querySelector(`.modal-input-${i}`).value;
+  }
+  pomodoroInput = arr[1];
+  shortBreakInput = arr[2];
+  longBreakInput = arr[3];
+  interval = arr[4];
+
+  //if there is custom setting
+  startingMinutes = pomodoroInput;
+  shortBreakMinutes = shortBreakInput;
+  longBreakMinutes = longBreakInput;
+  defaultIntervalForPomodoro = interval;
+
+  totalTime = startingMinutes * 60;
+  setTime();
+
+  overlay.classList.add("hidden");
+  modalSettings.classList.add("hidden");
 });

@@ -245,3 +245,92 @@ a:visited {
   background-color: #000;
   stroke: #fff;
 }
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.325);
+}
+.modal {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 600px;
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.27);
+  border-radius: 12px;
+}
+
+button {
+  border: none;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.btn-close-modal {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 12px;
+}
+
+.icon-close {
+  height: 32px;
+  width: 32px;
+  stroke: #00bf72;
+}
+.icon-close:hover {
+  fill: #00bf72;
+  stroke: #fff;
+}
+
+.btn-set {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 12px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: 2px solid #00bf72;
+  background-color: #fff;
+  color: #00bf72;
+}
+.btn-set:hover {
+  background-color: #00bf72;
+  color: #fff;
+}
+
+.modal-title {
+  margin: 12px 24px;
+}
+
+h2,
+h3 {
+  margin-left: 24px;
+  margin-bottom: 12px;
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+  margin-left: 24px;
+  margin-bottom: 24px;
+  width: 100px;
+  height: 30px;
+}
+
+.settings-description {
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.modal {
+  color: #343a40;
+}
