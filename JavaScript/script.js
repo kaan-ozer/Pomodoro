@@ -1,5 +1,7 @@
 "use strict";
 
+const dingEl = document.querySelector("#mySound");
+
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
 const btnStartStopEl = document.querySelector(".btn-start-stop");
@@ -93,6 +95,7 @@ function updateCountdown() {
   totalTime--;
 
   if (totalTime < 0) {
+    dingEl.play();
     //stop the setInterval when time = 0 for avoid negative time
     clearInterval(refreshInterval);
 
