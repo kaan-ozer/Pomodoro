@@ -27,7 +27,6 @@ let pomodoroInput, shortBreakInput, longBreakInput, interval;
 let pomodoroCounter = 0;
 //poomodoro starting minutes
 let startingMinutes = 20;
-
 //short break starting minutes
 let shortBreakMinutes = 1;
 //long break starting minutes
@@ -64,6 +63,31 @@ function setTime() {
   countdownEl.innerHTML = `${minutes}:${seconds}`;
 }
 
+btnSet.addEventListener("click", function () {
+  const arr = [];
+  for (let i = 1; i <= 4; i++) {
+    arr[i] = document.querySelector(`.modal-input-${i}`).value;
+  }
+  pomodoroInput = arr[1];
+  shortBreakInput = arr[2];
+  longBreakInput = arr[3];
+  interval = arr[4];
+
+  //if there is custom setting
+  startingMinutes = pomodoroInput;
+  shortBreakMinutes = shortBreakInput;
+  longBreakMinutes = longBreakInput;
+  defaultIntervalForPomodoro = Number(interval);
+
+  totalTime = startingMinutes * 60;
+
+  setTime();
+
+  console.log(pomodoroCounter, defaultIntervalForPomodoro);
+  overlay.classList.add("hidden");
+  modalSettings.classList.add("hidden");
+});
+
 function updateCountdown() {
   // total time will be decreased as one second in each second
   totalTime--;
@@ -73,39 +97,53 @@ function updateCountdown() {
     clearInterval(refreshInterval);
 
     if (isPomodoroActive) {
+      // short break is turned into active
+      btnPomodoroEl.classList.remove("active-btn");
+      btnShortBreakEl.classList.add("active-btn");
+      isShortBreakActive = true;
+      isPomodoroActive = false;
+
+      // time is setted for short break
+      totalTime = shortBreakMinutes * 60;
+
+      console.log(
+        pomodoroCounter,
+        defaultIntervalForPomodoro,
+        "pomodoro çalıştı short break ayarlandı"
+      );
+
+      setTime();
+      resetStartStop();
+    } else if (isShortBreakActive) {
+      //we need to remove active class for short break for the both cases
+      btnShortBreakEl.classList.remove("active-btn");
+      isShortBreakActive = false;
       //increase the counter
       pomodoroCounter++;
 
-      //check the ınterval of pomodoro
-      if (pomodoroCounter === defaultIntervalForPomodoro) {
-        btnPomodoroEl.classList.remove("active-btn");
+      //if long interval won't start, next pomodoro will start
+      if (pomodoroCounter !== defaultIntervalForPomodoro) {
+        //make the next pomodoro active
+        btnPomodoroEl.classList.add("active-btn");
+        isPomodoroActive = true;
+        totalTime = minutes * 60;
+        console.log("short break sornası pomodoro ayarlandı");
+        // time is setted for pomodoro
+      } else if (pomodoroCounter === defaultIntervalForPomodoro) {
+        //make the long break active
         btnLongBreakEl.classList.add("active-btn");
         isLongBreakActive = true;
-        isPomodoroActive = false;
 
+        console.log("Long break çalıştı");
+        //time is setted for long break
         totalTime = longBreakMinutes * 60;
-
-        setTime();
-
-        resetStartStop();
-      } else {
-        btnPomodoroEl.classList.remove("active-btn");
-        btnShortBreakEl.classList.add("active-btn");
-        isShortBreakActive = true;
-        isPomodoroActive = false;
-
-        totalTime = shortBreakMinutes * 60;
-
-        setTime();
-        resetStartStop();
       }
-    } else if (isShortBreakActive) {
-      btnPomodoroEl.classList.add("active-btn");
-      btnShortBreakEl.classList.remove("active-btn");
-      isShortBreakActive = false;
-      isPomodoroActive = true;
 
-      totalTime = shortBreakMinutes * 60;
+      console.log(
+        pomodoroCounter,
+        defaultIntervalForPomodoro,
+        "counter updated"
+      );
 
       setTime();
       resetStartStop();
@@ -114,15 +152,17 @@ function updateCountdown() {
       btnPomodoroEl.classList.add("active-btn");
       isLongBreakActive = false;
       isPomodoroActive = true;
+
       pomodoroCounter = 0;
 
-      totalTime = longBreakInput * 60;
+      //time is setted for pomodoro after long break
+      totalTime = minutes * 60;
 
       setTime();
       resetStartStop();
     }
   } else {
-    // get minutes and seconds and show the result
+    // change the time if it is not over
     setTime();
   }
 }
@@ -169,30 +209,8 @@ settingsAnchorOpenBar.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   modalSettings.classList.remove("hidden");
 });
+
 overlay.addEventListener("click", function () {
-  overlay.classList.add("hidden");
-  modalSettings.classList.add("hidden");
-});
-
-btnSet.addEventListener("click", function () {
-  const arr = [];
-  for (let i = 1; i <= 4; i++) {
-    arr[i] = document.querySelector(`.modal-input-${i}`).value;
-  }
-  pomodoroInput = arr[1];
-  shortBreakInput = arr[2];
-  longBreakInput = arr[3];
-  interval = arr[4];
-
-  //if there is custom setting
-  startingMinutes = pomodoroInput;
-  shortBreakMinutes = shortBreakInput;
-  longBreakMinutes = longBreakInput;
-  defaultIntervalForPomodoro = interval;
-
-  totalTime = startingMinutes * 60;
-  setTime();
-
   overlay.classList.add("hidden");
   modalSettings.classList.add("hidden");
 });
