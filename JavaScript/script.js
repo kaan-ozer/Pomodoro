@@ -6,6 +6,10 @@ const btnStartStopEl = document.querySelector(".btn-start-stop");
 const btnPomodoroEl = document.querySelector("#btn-pomodoro");
 const btnShortBreakEl = document.querySelector("#btn-shortBreak");
 const btnLongBreakEl = document.querySelector("#btn-longBreak");
+const btnRightEl = document.querySelector(".btn-right");
+const btnLeftEl = document.querySelector(".btn-left");
+const sidebarClosed = document.querySelector(".side-bar-closed");
+const sidebarOpen = document.querySelector(".side-bar-open");
 
 /* variables */
 
@@ -129,4 +133,14 @@ btnStartStopEl.addEventListener("click", function () {
     btnStartStopEl.innerHTML = "START";
     btnStartStopEl.style.backgroundColor = " rgba(222, 226, 230, 0.193)";
   }
+});
+
+btnRightEl.addEventListener("click", function () {
+  sidebarClosed.classList.add("hidden");
+  sidebarOpen.classList.remove("hidden");
+});
+
+btnLeftEl.addEventListener("click", function () {
+  sidebarClosed.classList.remove("hidden");
+  sidebarOpen.classList.add("hidden");
 });
