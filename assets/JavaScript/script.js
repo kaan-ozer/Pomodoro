@@ -81,6 +81,7 @@ btnSet.addEventListener("click", function () {
   defaultIntervalForPomodoro = Number(interval);
 
   totalTime = startingMinutes * 60;
+  totalTime = 1;
 
   setTime();
 
