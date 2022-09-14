@@ -1,6 +1,8 @@
 "use strict";
 
-const dingEl = document.querySelector("#mySound");
+// window.addEventListener("load", () => {
+//   console.log(window.Notification);
+// });
 
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
@@ -20,6 +22,7 @@ const settingsAnchorOpenBar = document.querySelector(
   ".settings-anchor-open-bar"
 );
 const btnSet = document.querySelector(".btn-set");
+const dingEl = document.querySelector("#mySound");
 
 /* variables */
 
