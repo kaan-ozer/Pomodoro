@@ -1,8 +1,20 @@
 "use strict";
 
-// window.addEventListener("load", () => {
-//   console.log(window.Notification);
-// });
+window.addEventListener("load", () => {
+  // console.log(window.Notification);
+  if (!window.Notification) return;
+
+  const sendNotification = (permission) => {
+    let notification = new Notification("title", {
+      body: "lorem30",
+    });
+
+    console.log(notification);
+  };
+
+  // console.log(Notification.permission);
+  Notification.requestPermission().then(sendNotification);
+});
 
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
