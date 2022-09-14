@@ -103,6 +103,9 @@ function updateCountdown() {
       btnPomodoroEl.classList.remove("active-btn");
       isPomodoroActive = false;
 
+      //increase the counter
+      pomodoroCounter++;
+
       //if long interval won't start, next pomodoro will start
       if (pomodoroCounter !== defaultIntervalForPomodoro) {
         //make the short break active
@@ -111,6 +114,7 @@ function updateCountdown() {
 
         // time is setted for short break
         totalTime = shortBreakMinutes * 60;
+        totalTime = 1;
       } else if (pomodoroCounter === defaultIntervalForPomodoro) {
         //make the long break active
         btnLongBreakEl.classList.add("active-btn");
@@ -119,6 +123,7 @@ function updateCountdown() {
         console.log("Long break çalıştı");
         //time is setted for long break
         totalTime = longBreakMinutes * 60;
+        totalTime = 1;
       }
 
       if (!window.Notification) {
@@ -139,12 +144,11 @@ function updateCountdown() {
       //we need to remove active class for short break for the both cases
       btnShortBreakEl.classList.remove("active-btn");
       isShortBreakActive = false;
-      //increase the counter
-      pomodoroCounter++;
 
       btnPomodoroEl.classList.add("active-btn");
       isPomodoroActive = true;
       totalTime = minutes * 60;
+      totalTime = 1;
       console.log("short break sornası pomodoro ayarlandı");
 
       if (!window.Notification) {
@@ -171,6 +175,7 @@ function updateCountdown() {
 
       //time is setted for pomodoro after long break
       totalTime = minutes * 60;
+      totalTime = 1;
 
       if (!window.Notification) {
         return;
