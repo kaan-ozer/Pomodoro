@@ -1,21 +1,5 @@
 "use strict";
 
-window.addEventListener("load", () => {
-  // console.log(window.Notification);
-  if (!window.Notification) return;
-
-  const sendNotification = (permission) => {
-    let notification = new Notification("title", {
-      body: "lorem30",
-    });
-
-    console.log(notification);
-  };
-
-  // console.log(Notification.permission);
-  Notification.requestPermission().then(sendNotification);
-});
-
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
 const btnStartStopEl = document.querySelector(".btn-start-stop");
@@ -117,36 +101,16 @@ function updateCountdown() {
     if (isPomodoroActive) {
       // short break is turned into active
       btnPomodoroEl.classList.remove("active-btn");
-      btnShortBreakEl.classList.add("active-btn");
-      isShortBreakActive = true;
       isPomodoroActive = false;
-
-      // time is setted for short break
-      totalTime = shortBreakMinutes * 60;
-
-      console.log(
-        pomodoroCounter,
-        defaultIntervalForPomodoro,
-        "pomodoro çalıştı short break ayarlandı"
-      );
-
-      setTime();
-      resetStartStop();
-    } else if (isShortBreakActive) {
-      //we need to remove active class for short break for the both cases
-      btnShortBreakEl.classList.remove("active-btn");
-      isShortBreakActive = false;
-      //increase the counter
-      pomodoroCounter++;
 
       //if long interval won't start, next pomodoro will start
       if (pomodoroCounter !== defaultIntervalForPomodoro) {
-        //make the next pomodoro active
-        btnPomodoroEl.classList.add("active-btn");
-        isPomodoroActive = true;
-        totalTime = minutes * 60;
-        console.log("short break sornası pomodoro ayarlandı");
-        // time is setted for pomodoro
+        //make the short break active
+        btnShortBreakEl.classList.add("active-btn");
+        isShortBreakActive = true;
+
+        // time is setted for short break
+        totalTime = shortBreakMinutes * 60;
       } else if (pomodoroCounter === defaultIntervalForPomodoro) {
         //make the long break active
         btnLongBreakEl.classList.add("active-btn");
@@ -157,11 +121,43 @@ function updateCountdown() {
         totalTime = longBreakMinutes * 60;
       }
 
-      console.log(
-        pomodoroCounter,
-        defaultIntervalForPomodoro,
-        "counter updated"
-      );
+      if (!window.Notification) {
+        return;
+      } else {
+        const sendNotification = (permission) => {
+          let notification = new Notification("time is over", {
+            body: `You finished your study, and now it is time to break, Have fun...`,
+          });
+
+          Notification.requestPermission().then(sendNotification);
+        };
+      }
+
+      setTime();
+      resetStartStop();
+    } else if (isShortBreakActive) {
+      //we need to remove active class for short break for the both cases
+      btnShortBreakEl.classList.remove("active-btn");
+      isShortBreakActive = false;
+      //increase the counter
+      pomodoroCounter++;
+
+      btnPomodoroEl.classList.add("active-btn");
+      isPomodoroActive = true;
+      totalTime = minutes * 60;
+      console.log("short break sornası pomodoro ayarlandı");
+
+      if (!window.Notification) {
+        return;
+      } else {
+        const sendNotification = (permission) => {
+          let notification = new Notification("Time is over", {
+            body: `You finished your break, and now it is time to study again, Have fun...`,
+          });
+
+          Notification.requestPermission().then(sendNotification);
+        };
+      }
 
       setTime();
       resetStartStop();
@@ -175,6 +171,18 @@ function updateCountdown() {
 
       //time is setted for pomodoro after long break
       totalTime = minutes * 60;
+
+      if (!window.Notification) {
+        return;
+      } else {
+        const sendNotification = (permission) => {
+          let notification = new Notification("Time is over", {
+            body: `You finished your break, and now it is time to study again, Have fun...`,
+          });
+
+          Notification.requestPermission().then(sendNotification);
+        };
+      }
 
       setTime();
       resetStartStop();
