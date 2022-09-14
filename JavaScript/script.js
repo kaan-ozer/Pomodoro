@@ -65,9 +65,6 @@ function setTime() {
 }
 
 function updateCountdown() {
-  // get minutes and seconds and show the result
-  setTime();
-
   // total time will be decreased as one second in each second
   totalTime--;
 
@@ -89,7 +86,7 @@ function updateCountdown() {
         totalTime = longBreakMinutes * 60;
 
         setTime();
-        totalTime = 2;
+
         resetStartStop();
       } else {
         btnPomodoroEl.classList.remove("active-btn");
@@ -97,7 +94,7 @@ function updateCountdown() {
         isShortBreakActive = true;
         isPomodoroActive = false;
 
-        totalTime = minutes * 60;
+        totalTime = shortBreakMinutes * 60;
 
         setTime();
         resetStartStop();
@@ -124,6 +121,9 @@ function updateCountdown() {
       setTime();
       resetStartStop();
     }
+  } else {
+    // get minutes and seconds and show the result
+    setTime();
   }
 }
 
