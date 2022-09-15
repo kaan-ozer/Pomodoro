@@ -28,11 +28,11 @@ let pomodoroInput, shortBreakInput, longBreakInput, interval;
 //pomodoro counter
 let pomodoroCounter = 0;
 //poomodoro starting minutes
-let startingMinutes = 20;
+let startingMinutes = 25;
 //short break starting minutes
-let shortBreakMinutes = 1;
+let shortBreakMinutes = 5;
 //long break starting minutes
-let longBreakMinutes = 1;
+let longBreakMinutes = 30;
 // time from second type
 let totalTime = startingMinutes * 60;
 let defaultIntervalForPomodoro = 4;
@@ -237,12 +237,45 @@ settingsAnchorWide.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   modalSettings.classList.remove("hidden");
 });
-// settingsAnchorOpenBar.addEventListener("click", function () {
-//   overlay.classList.remove("hidden");
-//   modalSettings.classList.remove("hidden");
-// });
 
 overlay.addEventListener("click", function () {
   overlay.classList.add("hidden");
   modalSettings.classList.add("hidden");
+});
+
+btnShortBreakEl.addEventListener("click", function () {
+  btnPomodoroEl.classList.remove("active-btn");
+  btnLongBreakEl.classList.remove("active-btn");
+  btnShortBreakEl.classList.add("active-btn");
+  isPomodoroActive = false;
+  isLongBreakActive = false;
+  isShortBreakActive = true;
+
+  totalTime = shortBreakMinutes * 60;
+
+  setTime();
+});
+btnPomodoroEl.addEventListener("click", function () {
+  btnPomodoroEl.classList.add("active-btn");
+  btnLongBreakEl.classList.remove("active-btn");
+  btnShortBreakEl.classList.remove("active-btn");
+  isPomodoroActive = true;
+  isLongBreakActive = false;
+  isShortBreakActive = false;
+
+  totalTime = startingMinutes * 60;
+
+  setTime();
+});
+btnLongBreakEl.addEventListener("click", function () {
+  btnPomodoroEl.classList.remove("active-btn");
+  btnLongBreakEl.classList.add("active-btn");
+  btnShortBreakEl.classList.remove("active-btn");
+  isPomodoroActive = false;
+  isLongBreakActive = true;
+  isShortBreakActive = false;
+
+  totalTime = longBreakMinutes * 60;
+
+  setTime();
 });
