@@ -81,11 +81,12 @@ btnSet.addEventListener("click", function () {
   longBreakMinutes = longBreakInput;
   defaultIntervalForPomodoro = Number(interval);
 
-  totalTime = startingMinutes * 60;
+  if (isPomodoroActive) totalTime = startingMinutes * 60;
+  else if (isShortBreakActive) totalTime = shortBreakMinutes * 60;
+  else if (isLongBreakActive) totalTime = longBreakMinutes * 60;
 
   setTime();
 
-  console.log(pomodoroCounter, defaultIntervalForPomodoro);
   overlay.classList.add("hidden");
   modalSettings.classList.add("hidden");
 });
