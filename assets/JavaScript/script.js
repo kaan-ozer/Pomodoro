@@ -147,8 +147,6 @@ function updateCountdown() {
       isPomodoroActive = true;
       totalTime = minutes * 60;
 
-      console.log("short break sornası pomodoro ayarlandı");
-
       if (!window.Notification) {
         return;
       } else {
