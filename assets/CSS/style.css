@@ -25,25 +25,45 @@ body {
   position: relative;
 }
 
+header {
+  margin-top: 6rem;
+  font-size: 24px;
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+.timer {
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.285);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 /*Buttons */
 
 .btn-header {
-  border: none;
   color: #fff;
-  font-size: 24px;
   background-color: transparent;
-  margin-bottom: 8px;
-  padding: 12px;
+  border: none;
+  padding: 6px 12px;
 }
 
 .btn-header:hover {
-  font-weight: bold;
   color: #ced4da;
-  cursor: pointer;
+  font-weight: bold;
 }
 
 .active-btn {
   background-color: rgba(52, 58, 64, 0.447);
   border-radius: 4px;
-  cursor: pointer;
+}
+
+.bg {
+  background-color: red;
+  border: 2px solid beige;
 }
