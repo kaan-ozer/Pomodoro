@@ -8,15 +8,15 @@ const btnShortBreakEl = document.querySelector("#btn-shortBreak");
 const btnLongBreakEl = document.querySelector("#btn-longBreak");
 const btnRightEl = document.querySelector(".btn-right");
 const btnLeftEl = document.querySelector(".btn-left");
-const sidebarClosed = document.querySelector(".side-bar-closed");
-const sidebarOpen = document.querySelector(".side-bar-open");
+const sidebarClosed = document.querySelector(".closed-bar");
+const sidebarOpen = document.querySelector(".open-bar");
 const btnCloseModal = document.querySelector(".btn-close-modal");
-const modalSettings = document.querySelector(".modal");
+const modalSettings = document.querySelector(".my-modal");
 const overlay = document.querySelector(".overlay");
 const settingsAnchor = document.querySelector(".settings-anchor");
-const settingsAnchorOpenBar = document.querySelector(
-  ".settings-anchor-open-bar"
-);
+// const settingsAnchorOpenBar = document.querySelector(
+//   ".settings-anchor-open-bar"
+// );
 const btnSet = document.querySelector(".btn-set");
 const dingEl = document.querySelector("#mySound");
 
@@ -228,13 +228,14 @@ btnCloseModal.addEventListener("click", function () {
 });
 
 settingsAnchor.addEventListener("click", function () {
+  console.log("test", overlay.classList);
   overlay.classList.remove("hidden");
   modalSettings.classList.remove("hidden");
 });
-settingsAnchorOpenBar.addEventListener("click", function () {
-  overlay.classList.remove("hidden");
-  modalSettings.classList.remove("hidden");
-});
+// settingsAnchorOpenBar.addEventListener("click", function () {
+//   overlay.classList.remove("hidden");
+//   modalSettings.classList.remove("hidden");
+// });
 
 overlay.addEventListener("click", function () {
   overlay.classList.add("hidden");
