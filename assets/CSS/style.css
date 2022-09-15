@@ -44,7 +44,36 @@ a:hover {
   flex-direction: column;
 }
 
-/*Buttons */
+.countdown {
+  color: #fff;
+  font-size: 7rem;
+  font-weight: 700px;
+  letter-spacing: 5px;
+}
+
+.side-bar-closed {
+  background-color: rgba(255, 255, 255, 0.264);
+  position: absolute;
+  left: 0px;
+  height: 100vh;
+  width: 60px;
+  gap: 32px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* RESPONSİVE */
+
+@media screen and (max-width: px) {
+}
+@media screen and (max-width: px) {
+}
+@media screen and (max-width: px) {
+}
+
+/* Buttons */
 
 .btn-header {
   color: #fff;
@@ -63,7 +92,57 @@ a:hover {
   border-radius: 4px;
 }
 
-.bg {
-  background-color: red;
-  border: 2px solid beige;
+.btn-start-stop {
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  background-color: transparent;
+
+  background-color: rgba(222, 226, 230, 0.193);
+
+  padding: 12px;
+  font-weight: 500;
+}
+
+.btn-start-stop:hover {
+  background-color: rgba(52, 58, 64, 0.447);
+  font-weight: bold;
+  color: #ced4da;
+  cursor: pointer;
+}
+
+.github-shortcut-anchor {
+  position: absolute;
+  bottom: 32px;
+}
+
+.settings-anchor:hover,
+.github-shortcut-anchor:hover,
+.reset-anchor:hover {
+  stroke: #051937;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.arrow-icon-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(+50%, 0);
+  background-color: #fff;
+  stroke: #051937;
+}
+
+.settings-icon {
+  stroke: #000;
+}
+.settings-icon:hover,
+.github-shortcut-icon:hover {
+  stroke: #228be6;
+}
+.reset-icon:hover {
+  fill: #228be6;
 }
