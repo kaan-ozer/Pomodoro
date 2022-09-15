@@ -8,7 +8,7 @@ FONT SIZE SYSTEM (px)
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
   box-sizing: border-box;
 }
 
@@ -39,13 +39,32 @@ a:visited {
   color: #051937;
 }
 
-p {
+p,
+hr {
   margin: 0 !important;
 }
 
 button:hover,
 a:hover {
   cursor: pointer;
+}
+
+h2,
+h3,
+.modal-input-1,
+.modal-input-2,
+.modal-input-3,
+.modal-input-4 {
+  margin-left: 2rem;
+  color: #343a40;
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+
+  width: 100px;
+  height: 30px;
 }
 
 .timer {
@@ -74,14 +93,12 @@ a:hover {
 }
 
 .side-bar-open {
-  padding-left: 12px;
   height: 100vh;
   width: 130px;
   position: absolute;
-
   gap: 32px;
-
   left: 0px;
+  padding-left: 12px;
   background-color: rgba(255, 255, 255, 0.264);
 }
 
@@ -147,7 +164,48 @@ a:hover {
   cursor: pointer;
 }
 
+.btn-set {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 12px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: 2px solid #00bf72;
+  background-color: #fff;
+  color: #00bf72;
+}
+.btn-set:hover {
+  background-color: #00bf72;
+  color: #fff;
+}
+
+.settings-anchor-wide:link,
+.settings-anchor-wide:visited,
+.reset-anchor-wide:link,
+.reset-anchor-wide:visited,
+.github-shortcut-anchor-wide:link,
+.github-shortcut-anchor-wide:visited {
+  width: 110px;
+  padding: 6px;
+}
+
+.settings-anchor-wide:hover,
+.reset-anchor-wide:hover,
+.github-shortcut-anchor-wide:hover {
+  background-color: rgba(0, 0, 0, 0.395);
+  border-radius: 6px;
+  color: #ced4da;
+}
+
 .github-shortcut-anchor {
+  position: absolute;
+  bottom: 32px;
+}
+
+.github-shortcut-anchor-wide {
   position: absolute;
   bottom: 32px;
 }
@@ -158,9 +216,31 @@ a:hover {
   stroke: #051937;
 }
 
+.btn-close-modal {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 12px;
+  height: 24px;
+  width: 24px;
+  border: none;
+  background-color: #fff;
+}
+
 .icon {
   height: 24px;
   width: 24px;
+}
+
+.icon-close {
+  height: 32px;
+  width: 32px;
+  stroke: #00bf72;
+}
+
+.icon-close:hover {
+  fill: #00bf72;
+  stroke: #fff;
 }
 
 .arrow-icon-right {
@@ -244,4 +324,19 @@ a:hover {
   .btn-header {
     font-size: 14px;
   }
+}
+
+.modal-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.settings-description {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.modal-sub-titles {
+  font-size: 20px;
+  font-weight: 400;
 }

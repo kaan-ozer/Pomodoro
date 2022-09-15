@@ -28,6 +28,11 @@
 
       gtag("config", "G-1RK6R1JZRX");
     </script>
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <title>Pomodoro</title>
   </head>
@@ -114,7 +119,7 @@
         
           <div class="open-bar hidden">
             <div
-              class="side-bar-open d-flex flex-column align-items-flex-start ps-3"
+              class="side-bar-open d-flex flex-column align-items-flex-start"
             >
               <a href="#" class="btn-next btn-left">
                 <svg
@@ -133,7 +138,7 @@
                 </svg>
               </a>
 
-              <a href="#" class="settings-anchor">
+              <a href="#" class="settings-anchor-wide">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -153,10 +158,10 @@
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   ></path>
                 </svg>
-                <p>Settings</p>
+                <p class="text-settings">Settings</p>
               </a>
 
-              <a href="#" class="reset-anchor">
+              <a href="#" class="reset-anchor-wide">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="256px"
@@ -174,7 +179,7 @@
 
               <a
                 href="https://github.com/kaan-ozer/Pomodoro"
-                class="github-shortcut-anchor"
+                class="github-shortcut-anchor-wide"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -216,35 +221,36 @@
 
     <div class="overlay hidden"></div>
 
-    <div class="my-modal hidden">
+    <div class="my-modal hidden ">
       <div class="modal-questions">
-        <h2 class="modal-title">Settings</h2>
+        <h2 class="modal-title mt-3 mb-3">Settings</h2>
 
-        <hr />
+        <hr class="mb-3" />
 
-        <h2 class="settings-description">Set Durations (in minutes)</h2>
+        <h2 class="settings-description mb-4">Set Durations <small>(in minutes)</small> </h2>
+       
 
         <div class="modal-question-1">
-          <h3>Pomodoro</h3>
-          <input type="number" min="0" class="modal-input-1" />
+          <h3 class="modal-sub-titles ">Pomodoro</h3>
+          <input type="number" min="0" class="modal-input-1  mb-4" />
         </div>
 
         <div class="modal-question-2">
-          <h3>Short Break</h3>
-          <input type="number" min="0" class="modal-input-2" />
+          <h3 class="modal-sub-titles ">Short Break</h3>
+          <input type="number" min="0" class="modal-input-2  mb-4" />
         </div>
 
         <div class="modal-question-3">
-          <h3>Long Break</h3>
-          <input type="number" min="0" class="modal-input-3" />
+          <h3 class="modal-sub-titles ">Long Break</h3>
+          <input type="number" min="0" class="modal-input-3  mb-4" />
         </div>
         <div class="modal-question-3">
-          <h3>Set the interval</h3>
-          <input type="number" min="0" class="modal-input-4" />
+          <h3 class="modal-sub-titles ">Set the interval</h3>
+          <input type="number" min="0" class="modal-input-4  mb-5" />
         </div>
       </div>
 
-      <button class="btn-close-modal">
+      <button class="btn-close-modal mt-3 me-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -260,6 +266,8 @@
           />
         </svg>
       </button>
+
+      <hr class="mb-3" />
 
       <button class="btn-set">Set</button>
     </div>

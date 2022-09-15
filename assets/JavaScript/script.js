@@ -14,6 +14,7 @@ const btnCloseModal = document.querySelector(".btn-close-modal");
 const modalSettings = document.querySelector(".my-modal");
 const overlay = document.querySelector(".overlay");
 const settingsAnchor = document.querySelector(".settings-anchor");
+const settingsAnchorWide = document.querySelector(".settings-anchor-wide");
 // const settingsAnchorOpenBar = document.querySelector(
 //   ".settings-anchor-open-bar"
 // );
@@ -228,7 +229,11 @@ btnCloseModal.addEventListener("click", function () {
 });
 
 settingsAnchor.addEventListener("click", function () {
-  console.log("test", overlay.classList);
+  overlay.classList.remove("hidden");
+  modalSettings.classList.remove("hidden");
+});
+
+settingsAnchorWide.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   modalSettings.classList.remove("hidden");
 });
