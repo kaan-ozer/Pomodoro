@@ -210,6 +210,56 @@
       </div>
     </div>
 
+    <div class="overlay hidden"></div>
+
+    <div class="modal hidden">
+      <div class="modal-questions">
+        <h2 class="modal-title">Settings</h2>
+
+        <hr />
+
+        <h2 class="settings-description">Set Durations (in minutes)</h2>
+
+        <div class="modal-question-1">
+          <h3>Pomodoro</h3>
+          <input type="number" min="0" class="modal-input-1" />
+        </div>
+
+        <div class="modal-question-2">
+          <h3>Short Break</h3>
+          <input type="number" min="0" class="modal-input-2" />
+        </div>
+
+        <div class="modal-question-3">
+          <h3>Long Break</h3>
+          <input type="number" min="0" class="modal-input-3" />
+        </div>
+        <div class="modal-question-3">
+          <h3>Set the interval</h3>
+          <input type="number" min="0" class="modal-input-4" />
+        </div>
+      </div>
+
+      <button class="btn-close-modal">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="icon-close"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </button>
+
+      <button class="btn-set">Set</button>
+    </div>
+
     <audio id="mySound" src="sounds/ding.mp3"></audio>
 
     <!-- JavaScript Bundle with Popper -->
