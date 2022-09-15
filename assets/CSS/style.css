@@ -277,6 +277,13 @@ input {
   fill: #228be6;
 }
 
+.pomodoro-interface {
+  position: absolute;
+  top: 167px;
+  font-weight: bold;
+  color: #fff;
+}
+
 /* RESPONSİVE */
 
 @media screen and (max-width: 2200px) {
@@ -323,6 +330,12 @@ input {
 
   .btn-header {
     font-size: 14px;
+  }
+
+  .pomodoro-interface {
+    position: absolute;
+    top: 157px;
+    font-weight: bold;
   }
 }
 
