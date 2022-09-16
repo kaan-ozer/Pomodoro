@@ -4,17 +4,19 @@ function showNotification(title, bodyText) {
   const notification = new Notification(title, {
     body: bodyText,
   });
-
-  notification.onclick = (e) => {};
 }
 
-if (Notification.permission === "granted") {
-  showNotification("Welcome", "Thanks for allowing notifications");
-} else if (Notification.permission !== "denied") {
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted")
-      showNotification("Welcome", "Thanks for allowing notifications");
-  });
+if (!window.Notification) {
+  return;
+} else {
+  if (Notification.permission === "granted") {
+    showNotification("Welcome", "Thanks for allowing notifications");
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted")
+        showNotification("Welcome", "Thanks for allowing notifications");
+    });
+  }
 }
 
 /* Elements */
