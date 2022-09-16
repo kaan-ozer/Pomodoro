@@ -12,7 +12,8 @@ if (Notification.permission === "granted") {
   showNotification();
 } else if (Notification.permission !== "denied") {
   Notification.requestPermission().then((permission) => {
-    if (permission === "granted") showNotification("test", "test body");
+    if (permission === "granted")
+      showNotification("Welcome", "Thanks for allowing notifications");
   });
 }
 
