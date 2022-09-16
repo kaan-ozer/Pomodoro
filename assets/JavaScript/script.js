@@ -2,7 +2,7 @@
 
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
-const btnResetAnchor = document.querySelector(".reset-anchor");
+const btnResetAnchor = document.querySelectorAll(".reset-anchor");
 const pomodoroInterface = document.querySelector(".pomodoro-interface");
 const btnResetAnchorWide = document.querySelector(".reset-anchor-wide");
 const btnStartStopEl = document.querySelector(".btn-start-stop");
@@ -16,7 +16,7 @@ const sidebarOpen = document.querySelector(".open-bar");
 const btnCloseModal = document.querySelector(".btn-close-modal");
 const modalSettings = document.querySelector(".my-modal");
 const overlay = document.querySelector(".overlay");
-const settingsAnchor = document.querySelector(".settings-anchor");
+const settingsAnchor = document.querySelectorAll(".settings-anchor");
 const settingsAnchorWide = document.querySelector(".settings-anchor-wide");
 const btnSet = document.querySelector(".btn-set");
 const dingEl = document.querySelector("#mySound");
@@ -241,10 +241,12 @@ btnCloseModal.addEventListener("click", function () {
   modalSettings.classList.add("hidden");
 });
 
-settingsAnchor.addEventListener("click", function () {
-  overlay.classList.remove("hidden");
-  modalSettings.classList.remove("hidden");
-});
+for (let i = 0; i < settingsAnchor.length; i++) {
+  settingsAnchor[i].addEventListener("click", function () {
+    overlay.classList.remove("hidden");
+    modalSettings.classList.remove("hidden");
+  });
+}
 
 settingsAnchorWide.addEventListener("click", function () {
   overlay.classList.remove("hidden");
@@ -295,29 +297,31 @@ btnLongBreakEl.addEventListener("click", function () {
   setTime();
 });
 
-btnResetAnchor.addEventListener("click", function () {
-  btnPomodoroEl.classList.add("active-btn");
-  btnLongBreakEl.classList.remove("active-btn");
-  btnShortBreakEl.classList.remove("active-btn");
+for (let i = 0; i < btnResetAnchor.length; i++) {
+  btnResetAnchor[i].addEventListener("click", function () {
+    btnPomodoroEl.classList.add("active-btn");
+    btnLongBreakEl.classList.remove("active-btn");
+    btnShortBreakEl.classList.remove("active-btn");
 
-  isPomodoroActive = true;
-  isLongBreakActive = false;
-  isShortBreakActive = false;
+    isPomodoroActive = true;
+    isLongBreakActive = false;
+    isShortBreakActive = false;
 
-  pomodoroCounter = 0;
+    pomodoroCounter = 0;
 
-  pomodoroInterface.innerHTML = `#${pomodoroCounter + 1}`;
+    pomodoroInterface.innerHTML = `#${pomodoroCounter + 1}`;
 
-  startingMinutes = 25;
+    startingMinutes = 25;
 
-  shortBreakMinutes = 5;
+    shortBreakMinutes = 5;
 
-  longBreakMinutes = 30;
+    longBreakMinutes = 30;
 
-  totalTime = startingMinutes * 60;
+    totalTime = startingMinutes * 60;
 
-  setTime();
-});
+    setTime();
+  });
+}
 
 btnResetAnchorWide.addEventListener("click", function () {
   btnPomodoroEl.classList.add("active-btn");
