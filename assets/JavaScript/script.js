@@ -1,5 +1,21 @@
 "use strict";
 
+function showNotification(title, body) {
+  const notification = new Notification("title", {
+    body: "body",
+  });
+
+  notification.onclick = (e) => {};
+}
+
+if (Notification.permission === "granted") {
+  showNotification();
+} else if (Notification.permission !== "denied") {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") showNotification("test", "test body");
+  });
+}
+
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
 const btnResetAnchor = document.querySelectorAll(".reset-anchor");
@@ -138,12 +154,11 @@ function updateCountdown() {
       if (!window.Notification) {
         return;
       } else {
-        const sendNotification = (permission) => {
-          let notification = new Notification("time is over", {
-            body: `You finished your study, and now it is time to break, Have fun...`,
-          });
-
-          Notification.requestPermission().then(sendNotification);
+       
+          showNotification(
+            "time is over",
+            `You finished your study, and now it is time to break, Have fun...`
+          );
         };
       }
 
@@ -160,16 +175,17 @@ function updateCountdown() {
 
       pomodoroInterface.innerHTML = `#${pomodoroCounter + 1}`;
 
+ 
+      
       if (!window.Notification) {
         return;
       } else {
-        const sendNotification = (permission) => {
-          let notification = new Notification("Time is over", {
-            body: `You finished your break, and now it is time to study again, Have fun...`,
-          });
-
-          Notification.requestPermission().then(sendNotification);
-        };
+       
+          showNotification(
+            "time is over",
+            `You finished your break, and now it is time to study again, Have fun...`
+          );
+        ;
       }
 
       setTime();
@@ -186,17 +202,20 @@ function updateCountdown() {
       //time is setted for pomodoro after long break
       totalTime = minutes * 60;
 
+    
+
       if (!window.Notification) {
         return;
       } else {
-        const sendNotification = (permission) => {
-          let notification = new Notification("Time is over", {
-            body: `You finished your break, and now it is time to study again, Have fun...`,
-          });
-
-          Notification.requestPermission().then(sendNotification);
-        };
+       
+          showNotification(
+            "time is over",
+            `You finished your break, and now it is time to study again, Have fun...`
+          );
+        
       }
+
+      
 
       setTime();
       resetStartStop();
