@@ -9,7 +9,7 @@ function showNotification(title, bodyText) {
 }
 
 if (Notification.permission === "granted") {
-  showNotification();
+  showNotification("Welcome", "Thanks for allowing notifications");
 } else if (Notification.permission !== "denied") {
   Notification.requestPermission().then((permission) => {
     if (permission === "granted")
