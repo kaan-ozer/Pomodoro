@@ -1,8 +1,8 @@
 "use strict";
 
-function showNotification(title, body) {
-  const notification = new Notification("title", {
-    body: "body",
+function showNotification(title, bodyText) {
+  const notification = new Notification(title, {
+    body: bodyText,
   });
 
   notification.onclick = (e) => {};
@@ -12,7 +12,8 @@ if (Notification.permission === "granted") {
   showNotification();
 } else if (Notification.permission !== "denied") {
   Notification.requestPermission().then((permission) => {
-    if (permission === "granted") showNotification("test", "test body");
+    if (permission === "granted")
+      showNotification("Welcome", "Thanks for allowing notifications");
   });
 }
 
