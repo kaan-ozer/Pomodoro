@@ -1,23 +1,23 @@
 "use strict";
 
-function showNotification(title, bodyText) {
-  const notification = new Notification(title, {
-    body: bodyText,
-  });
-}
+// function showNotification(title, bodyText) {
+//   const notification = new Notification(title, {
+//     body: bodyText,
+//   });
+// }
 
-if (!window.Notification) {
-  return;
-} else {
-  if (Notification.permission === "granted") {
-    showNotification("Welcome", "Thanks for allowing notifications");
-  } else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted")
-        showNotification("Welcome", "Thanks for allowing notifications");
-    });
-  }
-}
+// if (!window.Notification) {
+//   return;
+// } else {
+//   if (Notification.permission === "granted") {
+//     showNotification("Welcome", "Thanks for allowing notifications");
+//   } else if (Notification.permission !== "denied") {
+//     Notification.requestPermission().then((permission) => {
+//       if (permission === "granted")
+//         showNotification("Welcome", "Thanks for allowing notifications");
+//     });
+//   }
+// }
 
 /* Elements */
 const countdownEl = document.querySelector(".countdown");
@@ -154,14 +154,14 @@ function updateCountdown() {
         totalTime = longBreakMinutes * 60;
       }
 
-      if (!window.Notification) {
-        return;
-      } else {
-        showNotification(
-          "time is over",
-          `You finished your study, and now it is time to break, Have fun...`
-        );
-      }
+      // if (!window.Notification) {
+      //   return;
+      // } else {
+      //   showNotification(
+      //     "time is over",
+      //     `You finished your study, and now it is time to break, Have fun...`
+      //   );
+      // }
 
       setTime();
       resetStartStop();
@@ -176,14 +176,14 @@ function updateCountdown() {
 
       pomodoroInterface.innerHTML = `#${pomodoroCounter + 1}`;
 
-      if (!window.Notification) {
-        return;
-      } else {
-        showNotification(
-          "time is over",
-          `You finished your break, and now it is time to study again, Have fun...`
-        );
-      }
+      // if (!window.Notification) {
+      //   return;
+      // } else {
+      //   showNotification(
+      //     "time is over",
+      //     `You finished your break, and now it is time to study again, Have fun...`
+      //   );
+      // }
 
       setTime();
       resetStartStop();
@@ -199,14 +199,14 @@ function updateCountdown() {
       //time is setted for pomodoro after long break
       totalTime = minutes * 60;
 
-      if (!window.Notification) {
-        return;
-      } else {
-        showNotification(
-          "time is over",
-          `You finished your break, and now it is time to study again, Have fun...`
-        );
-      }
+      // if (!window.Notification) {
+      //   return;
+      // } else {
+      //   showNotification(
+      //     "time is over",
+      //     `You finished your break, and now it is time to study again, Have fun...`
+      //   );
+      // }
 
       setTime();
       resetStartStop();
