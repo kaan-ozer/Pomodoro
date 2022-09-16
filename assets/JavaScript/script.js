@@ -154,12 +154,10 @@ function updateCountdown() {
       if (!window.Notification) {
         return;
       } else {
-       
-          showNotification(
-            "time is over",
-            `You finished your study, and now it is time to break, Have fun...`
-          );
-        };
+        showNotification(
+          "time is over",
+          `You finished your study, and now it is time to break, Have fun...`
+        );
       }
 
       setTime();
@@ -175,17 +173,13 @@ function updateCountdown() {
 
       pomodoroInterface.innerHTML = `#${pomodoroCounter + 1}`;
 
- 
-      
       if (!window.Notification) {
         return;
       } else {
-       
-          showNotification(
-            "time is over",
-            `You finished your break, and now it is time to study again, Have fun...`
-          );
-        ;
+        showNotification(
+          "time is over",
+          `You finished your break, and now it is time to study again, Have fun...`
+        );
       }
 
       setTime();
@@ -202,20 +196,14 @@ function updateCountdown() {
       //time is setted for pomodoro after long break
       totalTime = minutes * 60;
 
-    
-
       if (!window.Notification) {
         return;
       } else {
-       
-          showNotification(
-            "time is over",
-            `You finished your break, and now it is time to study again, Have fun...`
-          );
-        
+        showNotification(
+          "time is over",
+          `You finished your break, and now it is time to study again, Have fun...`
+        );
       }
-
-      
 
       setTime();
       resetStartStop();
