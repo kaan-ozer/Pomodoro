@@ -363,7 +363,7 @@ input {
 
 @media screen and (max-width: 650px) {
   header {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .github-shortcut-anchor {
@@ -412,7 +412,7 @@ input {
 
 @media screen and (max-width: 366px) {
   header {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .next-pomodoro-btn {
