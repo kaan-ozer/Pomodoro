@@ -1,8 +1,8 @@
 "use strict";
 
-function showNotification(title, body) {
-  const notification = new Notification("title", {
-    body: "body",
+function showNotification(title, bodyText) {
+  const notification = new Notification(title, {
+    body: bodyText,
   });
 
   notification.onclick = (e) => {};
