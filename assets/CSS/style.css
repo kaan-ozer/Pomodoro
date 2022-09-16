@@ -62,7 +62,7 @@ h3,
 input {
   text-align: center;
   font-weight: bold;
-
+  border: 2px solid #00bf736b;
   width: 100px;
   height: 30px;
 }
@@ -155,6 +155,27 @@ input {
   background-color: rgba(222, 226, 230, 0.193);
   padding: 8px 12px;
   font-weight: 500;
+}
+
+.next-pomodoro-btn {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  top: 560px;
+  right: 50%;
+  transform: translate(56%, 0);
+  width: 44px;
+  height: 44px;
+}
+.next-pomodoro-icon:hover {
+  fill: #ced4da;
+}
+
+.next-pomodoro-icon {
+  height: 44px;
+  width: 44px;
+  stroke: rgba(222, 226, 230, 0.193);
+  fill: #fff;
 }
 
 .btn-start-stop:hover {
@@ -287,6 +308,10 @@ input {
 /* RESPONSİVE */
 
 @media screen and (max-width: 2200px) {
+  .next-pomodoro-btn {
+    top: 570px;
+  }
+
   .timer {
     height: 500px;
   }
@@ -298,6 +323,27 @@ input {
 }
 
 @media screen and (max-width: 991px) {
+  .github-shortcut-anchor {
+    position: static;
+    /* bottom: 0px;
+    left: 0px;
+    width: 500px;
+    height: 50px; */
+  }
+
+  .bottom-bar {
+    margin-top: 3rem;
+    gap: 32px;
+  }
+
+  .next-pomodoro-btn {
+    top: 490px;
+  }
+  .next-pomodoro-icon {
+    width: 32px;
+    height: 32px;
+  }
+
   .timer {
     height: 450px;
   }
@@ -316,6 +362,31 @@ input {
 }
 
 @media screen and (max-width: 650px) {
+  header {
+    margin-top: 4rem;
+  }
+
+  .github-shortcut-anchor {
+    position: static;
+    /* bottom: 0px;
+    left: 0px;
+    width: 500px;
+    height: 50px; */
+  }
+
+  .bottom-bar {
+    margin-top: 3rem;
+    gap: 32px;
+  }
+
+  .next-pomodoro-btn {
+    top: 455px;
+  }
+  .next-pomodoro-icon {
+    width: 24px;
+    height: 24px;
+  }
+
   .timer {
     height: 400px;
   }
@@ -330,6 +401,42 @@ input {
 
   .btn-header {
     font-size: 14px;
+  }
+
+  .pomodoro-interface {
+    position: absolute;
+    top: 157px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 366px) {
+  header {
+    margin-top: 3rem;
+  }
+
+  .next-pomodoro-btn {
+    top: 410px;
+  }
+  .next-pomodoro-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .timer {
+    height: 340px;
+  }
+
+  .countdown {
+    font-size: 3rem;
+  }
+  .btn-start-stop {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .btn-header {
+    font-size: 10px;
   }
 
   .pomodoro-interface {
